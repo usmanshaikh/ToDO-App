@@ -55,7 +55,6 @@
     min-height: 40px;
     font-weight: bold;
     text-align: center;
-    font-style: italic;
     border-radius: 50px;
     display: inline-block;
     background-color: $white;
@@ -136,8 +135,10 @@
       height: 180px;
     }
     .name {
+      padding: 3px;
+      min-height: 30px;
       font-size: 17px;
-      padding-top: 8px;
+      min-width: 170px;
     }
     .todo--detail {
       .two--grid {

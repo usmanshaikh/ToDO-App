@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         if (typeof response !== 'undefined' && response.length > 0) {
           response.map(val => { this.userImage = val.image; this.userName = val.name; });
         }else{
-          this.userImage = '../../../assets/avatar-mini.png';
+          this.userImage = '../../../assets/avatar.png';
           this.userName = 'Your Name';
         }
       })

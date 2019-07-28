@@ -9,6 +9,11 @@ body {
   padding-bottom: 40px;
   font-family: "Roboto";
   background-color: lighten($dark-black, 3);
+  &.keyboardOpen{
+    .footerHide{
+      display: none;
+    }
+  }
 }
 
 .spinner{

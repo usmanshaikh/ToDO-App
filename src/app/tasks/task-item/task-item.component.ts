@@ -130,6 +130,8 @@ export class TaskItemComponent implements OnInit, OnDestroy {
     this.checkCurrentActiveCategory();
   }
 
+  onInputFocus(){ this.taskService.inputFocus.next(); }
+
   loadTodosTasks() {
     this.subscription.add(
       this.taskService.getTodo(this.currentUserId).subscribe(data => {

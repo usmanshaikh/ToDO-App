@@ -3,9 +3,10 @@ import { UserProfileService } from "./user-profile.service";
 import { AngularFireStorage } from "@angular/fire/storage";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { AngularFireAuth } from "@angular/fire/auth";
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Component, OnInit, OnDestroy, Inject } from "@angular/core";
 import { finalize } from "rxjs/operators";
 import { Subscription } from 'rxjs';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: "user-profile",
@@ -30,7 +31,8 @@ export class UserProfileComponent implements OnInit,OnDestroy {
     private angularFireAuth: AngularFireAuth,
     private angularFirestore: AngularFirestore,
     private userProfileService: UserProfileService,
-    private angularFireStorage: AngularFireStorage
+    private angularFireStorage: AngularFireStorage,
+    @Inject(DOCUMENT) private document: Document,
   ) {
     this.subscription.add(
       this.angularFireAuth.authState.subscribe(user => {
@@ -96,12 +98,12 @@ export class UserProfileComponent implements OnInit,OnDestroy {
         if (typeof response !== 'undefined' && response.length > 0) {
           response.map(val => { this.imgSrc = val.image; this.name = val.name; });
         }else{
-          this.imgSrc = '../../../assets/avatar-large.png';
+          this.imgSrc = '../../../assets/avatar.png';
           this.name = 'Your Name';
         }
       })
-      );
-    }
+    );
+  }
 
   onClearTask(taskStatus: string) {
     this.firebasePath.doc(this.currentUserId)
@@ -117,6 +119,10 @@ export class UserProfileComponent implements OnInit,OnDestroy {
         document.getElementById("ClearActiveTodoModal").click();
       });
   }
+
+  onFocus(){ this.document.body.classList.add('keyboardOpen'); }
+
+  onBlur(){ this.document.body.classList.remove('keyboardOpen'); }
 
   ngOnInit() { this.resetForm(); }
 

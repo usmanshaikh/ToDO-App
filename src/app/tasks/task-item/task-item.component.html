@@ -1,7 +1,7 @@
 <div class="viewAll">
   <div class="task--item--wrapper">
     <div class="tast--listout-wrapper">
-      <div class="no--tast-listout" *ngIf="filterTaskItemList.length === 0; else taskItem" >
+      <div class="no--tast-listout" (click)="onInputFocus()" *ngIf="filterTaskItemList.length === 0; else taskItem" >
         <h1 class="no--task--heading"> <i class="far fa-smile"></i> Add A ToDO.... </h1>
       </div>
       <ng-template #taskItem>

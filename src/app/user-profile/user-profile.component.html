@@ -71,6 +71,8 @@
                 class="form-control input--form"
                 placeholder="Name *"
                 [ngClass]="{ 'is-invalid': submitted && f.userName.errors }"
+                (focus)="onFocus($event)"
+                (blur)="onBlur($event)"
               />
               <div *ngIf="submitted && f.userName.errors" class="invalid-feedback" >
                 <div *ngIf="f.userName.errors.required">Name is required</div>

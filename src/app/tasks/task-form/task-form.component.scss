@@ -8,13 +8,12 @@
       height: 50px;
       border: none;
       color: $white;
-      font-weight: 900;
-      font-style: italic;
       text-transform: capitalize;
       background-color: transparent;
       border-bottom: 2px solid $sky-green !important;
       &::-webkit-input-placeholder {
         color: #929292;
+        font-weight: 900;
         @include transition(color 0.3s);
       }
       &:focus {

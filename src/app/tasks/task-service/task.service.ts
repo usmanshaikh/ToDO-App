@@ -12,6 +12,7 @@ export class TaskService {
   activeTask = new Subject<any>();
   completeTask = new Subject<any>();
   activeButton = new Subject<any>();
+  inputFocus = new Subject<any>();
   firebasePath = this.angularFirestore.collection("users");
 
   constructor(private angularFirestore: AngularFirestore) {}
