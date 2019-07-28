@@ -1,0 +1,20 @@
+@import "../../.././styles/styles.variable.scss";
+
+.task--page--wrapper {
+  padding: 50px 0px;
+  min-height: 500px;
+  .task--container--wrapperr {
+    width: 75%;
+    margin: 0 auto;
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1000px){
+    .task--container--wrapperr {
+      width: 100%;
+    }
+  }
+  @media #{$media-small} {
+    .task--container--wrapperr {
+      width: 100%;
+    }
+  }
+}

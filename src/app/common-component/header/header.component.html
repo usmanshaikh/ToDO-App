@@ -1,0 +1,82 @@
+<header class="header--page--wrapper">
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav>
+      <div class="mobile--side--nav">
+        <div class="user--display">
+          <div class="two--grid" [routerLink]="['/user-profile']" (click)="sidenav.close()" >
+            <ng-template  [ngIf]="userImage">
+            <div class="col--1">
+              <img [attr.src]="userImage" alt="user--image" class="user--avatar" />
+            </div>
+            <div class="col--2">
+              <p class="user--name">{{ userName }}</p>
+            </div>
+          </ng-template>
+          </div>
+        </div>
+        <div class="menu--list">
+          <button class="menu--item" mat-button [routerLink]="['/']" (click)="sidenav.close()" >
+            <i class="fas fa-home"></i>Home
+          </button>
+          <button class="menu--item" mat-button [routerLink]="['/user-profile']" (click)="sidenav.close()" >
+            <i class="fas fa-user-circle"></i>Profile
+          </button>
+          <button class="menu--item" mat-button [routerLink]="['/sign-in']" (click)="onLogout(); sidenav.close()" >
+            <i class="fas fa-sign-out-alt"></i>Logout
+          </button>
+        </div>
+      </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <nav class="navbar fixed-top navbar-expand-lg navbar--bg--color">
+        <div class="container">
+          <div class="toggle--menu--wrap">
+            <button (click)="sidenav.toggle()" class="btn toggle--btn" *ngIf="authService.isAuthenticated()" >
+              <i class="fas fa-bars"></i>
+            </button>
+            <a class="navbar-brand navbar--brand--name" [routerLink]="['/']">
+              <img src="../../../assets/logo-tiny.png" alt="Logo" class="navbar--logo" />
+              <span class="navbar--logo--name">ToDo App</span>
+            </a>
+          </div>
+          <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item dropdown" *ngIf="authService.isAuthenticated()" >
+                <ng-template [ngIf]="userImage">
+                <a
+                  class="nav-link dropdown-toggle navbar--user--dropdown"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <img [attr.src]="userImage" alt="user--image" class="user--avatar" />
+                  <span class="user--name">{{ userName }}</span>
+                </a>
+                <div class="dropdown-menu user--dp-menu" aria-labelledby="navbarDropdown" >
+                  <a class="dropdown-item dp--menu" [routerLink]="['/']" >
+                    <i class="fas fa-home"></i>Home
+                  </a>
+                  <a class="dropdown-item dp--menu" [routerLink]="['/user-profile']" >
+                    <i class="fas fa-user-circle"></i>Profile
+                  </a>
+                  <a class="dropdown-item dp--menu" (click)="onLogout()" >
+                    <i class="fas fa-sign-out-alt"></i>Logout
+                  </a>
+                </div>
+              </ng-template>
+              </li>
+              <ng-template [ngIf]="!authService.isAuthenticated()">
+                <li class="nav-item"><a class="nav-link a--link" [routerLink]="['/sign-in']">Sign In</a></li>
+                <li class="nav-item"><a class="nav-link a--link" [routerLink]="['/sign-up']">Sign Up</a></li>
+              </ng-template>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</header>

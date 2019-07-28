@@ -1,0 +1,90 @@
+<div class="viewAll">
+  <div class="task--item--wrapper">
+    <div class="tast--listout-wrapper">
+      <div class="no--tast-listout" *ngIf="filterTaskItemList.length === 0; else taskItem" >
+        <h1 class="no--task--heading"> <i class="far fa-smile"></i> Add A ToDO.... </h1>
+      </div>
+      <ng-template #taskItem>
+        <div class="listout--item" *ngFor="let item of filterTaskItemList; let i = index" [id]="i" >
+          <div class="three--grid">
+            <div class="col--1 flex--box padding--rgt--remove">
+              <button class="btn btn--icon" 
+                [ngClass]="{ 'completed-btn': item.status === 'complete', ' ': item.status === 'complete' }"
+                (click)="onCompleteTask(item)">
+                <i class="fas fa-check icon--i"></i>
+              </button>
+            </div>
+            <div class="col--2 flex--box">
+              <p class="summary--txt" 
+                [ngClass]="{ 'completed-txt': item.status === 'complete', ' ': item.status === 'complete' }" >
+                {{ item.taskMsg }}
+              </p>
+            </div>
+            <div class="col--3 flex--box">
+              <button class="btn btn--icon" data-toggle="modal" data-target="#editTaskModal" 
+                (click)="onEditTaskModal(item)" >
+                <i class="far fa-edit icon--i"></i>
+              </button>
+              <button class="btn btn--icon" data-toggle="modal" data-target="#deleteTaskModal"
+                (click)="onOpenDeleteModal(item)" >
+                <i class="far fa-trash-alt icon--i"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade common--modal edit--task--modal" id="editTaskModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <form [formGroup]="toDoEditForm" (ngSubmit)="onSubmit(toDoEditForm)">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit ToDo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="edit-todo-tast-input-wrapper">
+            <input type="text" class="tast--input" formControlName="taskName" placeholder="Edit a ToDO..." autofocus />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn--positive" mat-button>
+            Save
+          </button>
+          <button type="button" class="btn btn--negative" data-dismiss="modal" mat-button >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="modal fade common--modal delete--task--modal" id="deleteTaskModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete ToDo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="text-center warning--txt"> Do You Want To Delete This Particular ToDo?? </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn--positive" (click)="onDelete()" mat-button >
+          Yes
+        </button>
+        <button type="button" class="btn btn--negative" data-dismiss="modal" mat-button >
+          No
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

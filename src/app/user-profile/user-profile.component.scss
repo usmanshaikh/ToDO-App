@@ -1,0 +1,151 @@
+@import "../.././styles/styles.variable.scss";
+.user--profile--page--wrapper {
+  .profile--card {
+    padding: 30px 0px 50px;
+    position: relative;
+  }
+  .btn--icon {
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 50px;
+    background-color: $white;
+    color: lighten($dark-black, 10);
+    position: relative;
+    @include transition(background-color 0.5s);
+    i {
+      margin-right: 5px;
+    }
+    &.edit--btn {
+      right: 0;
+      position: absolute;
+    }
+    &.disabledBtn:hover {
+      cursor: not-allowed;
+      background-color: $white;
+    }
+    &:hover {
+      background-color: $sky-green;
+    }
+  }
+  .image--wrap {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 5px solid $sky-green;
+  }
+  .user--image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  .user--name {
+    left: 0;
+    right: 0;
+    width: 100%;
+    bottom: 40px;
+    text-align: center;
+    position: absolute;
+  }
+  .name {
+    font-size: 20px;
+    min-width: 200px;
+    padding: 5px 10px;
+    min-height: 40px;
+    font-weight: bold;
+    text-align: center;
+    font-style: italic;
+    border-radius: 50px;
+    display: inline-block;
+    background-color: $white;
+    text-transform: uppercase;
+  }
+  .todo--detail {
+    .two--grid {
+      width: 400px;
+      margin: 0 auto;
+      @include flexWrap($flex-wrap: nowrap, $justify-content: space-between);
+    }
+    .col--1 {
+      text-align: center;
+    }
+    .count--box {
+      width: 110px;
+      font-size: 20px;
+      min-height: 75px;
+      margin: 0px auto;
+      margin-bottom: 5px;
+      border-radius: 4px;
+      font-weight: bold;
+      border: 1px solid $white;
+      @include flexWrap($justify-content: center);
+    }
+    .label {
+      color: $white;
+      font-weight: 500;
+      margin: 20px 0px;
+    }
+  }
+  .warning--txt {
+    font-size: 17px;
+    color: #dc3545;
+    font-weight: 900;
+  }
+  @include commonForm($color: $dark-black, $number: 15);
+  .custom--choose--file {
+    .choose-file {
+      opacity: 0;
+      z-index: -1;
+      width: 0.1px;
+      height: 0.1px;
+      overflow: hidden;
+      position: absolute;
+    }
+    .choose-file + .upload-file {
+      width: 50%;
+      color: $white;
+      padding: 10px;
+      display: block;
+      font-size: 13px;
+      cursor: pointer;
+      font-weight: 500;
+      text-align: center;
+      border-radius: 50px;
+      text-transform: uppercase;
+      background-color: #0d6152;
+      @include transition(background-color 0.5s);
+    }
+    .choose-file:focus + .upload-file,
+    .choose-file + .upload-file:hover {
+      background-color: lighten(#0d6152, 10);
+    }
+    label.upload-file::before {
+      content: "Choose file";
+    }
+    .choose-file:valid + .upload-file::before {
+      content: "1 file chosen";
+    }
+  }
+  @media #{$media-small} {
+    .btn--icon.edit--btn {
+      top: 5px;
+    }
+    .image--wrap {
+      width: 180px;
+      height: 180px;
+    }
+    .name {
+      font-size: 17px;
+      padding-top: 8px;
+    }
+    .todo--detail {
+      .two--grid {
+        width: 100%;
+      }
+      .col--1 {
+        width: 100%;
+      }
+    }
+  }
+}

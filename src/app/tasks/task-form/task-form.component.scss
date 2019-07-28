@@ -1,0 +1,41 @@
+@import "../../.././styles/styles.variable.scss";
+
+.task--form--wrapper {
+  .to-do-tast-input-wrapper {
+    position: relative;
+    .tast--input {
+      width: 100%;
+      height: 50px;
+      border: none;
+      color: $white;
+      font-weight: 900;
+      font-style: italic;
+      text-transform: capitalize;
+      background-color: transparent;
+      border-bottom: 2px solid $sky-green !important;
+      &::-webkit-input-placeholder {
+        color: #929292;
+        @include transition(color 0.3s);
+      }
+      &:focus {
+        &::-webkit-input-placeholder {
+          color: $white;
+        }
+      }
+    }
+    .btn--add {
+      top: 0;
+      right: 0;
+      position: absolute;
+      background-color: lighten($dark-black, 3);
+    }
+    .add--icon {
+      font-size: 30px;
+      color: $sky-green;
+      @include transition(color 0.3s);
+      &:hover {
+        color: lighten($sky-green, 20);
+      }
+    }
+  }
+}

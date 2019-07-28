@@ -1,0 +1,25 @@
+1.Angularfire2 Installation and Setup
+
+https://github.com/angular/angularfire2/blob/master/docs/install-and-setup.md
+
+
+
+2.Deploying Angular 6 Applications to Firebase Hosting. Follow the Link bellow
+
+https://medium.com/@longboardcreator/deploying-angular-6-applications-to-firebase-hosting-b5dacde9c772
+https://scotch.io/tutorials/deploying-an-angular-cli-app-to-production-with-firebase
+
+
+
+3.Authenticate Using Facebook Login on App
+
+https://www.codexworld.com/create-facebook-app-id-app-secret/
+https://itnext.io/step-by-step-complete-firebase-authentication-in-angular-2-97ca73b8eb32
+
+
+
+
+4.Authenticate Using Google Login on App
+
+Setting up OAuth 2.0
+https://support.google.com/cloud/answer/6158849?hl=en#authorized-domains

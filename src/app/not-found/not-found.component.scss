@@ -1,0 +1,33 @@
+@import "../.././styles/styles.variable.scss";
+
+.not--found--page--wrapper {
+  height: 70vh;
+  @include flexWrap($justify-content: center);
+  .center--wrap {
+    text-align: center;
+  }
+  .face--icon {
+    font-size: 80px;
+  }
+  .sub--head {
+    font-size: 40px;
+    margin: 10px 0px 0px;
+  }
+  .sub--txt {
+    font-size: 15px;
+    font-weight: bold;
+    font-style: italic;
+    letter-spacing: 1px;
+  }
+  .back--btn {
+    font-size: 15px;
+    min-width: 170px;
+    margin-top: 20px;
+    border-radius: 20px;
+    background-color: $sky-green;
+    @include transition(background-color 0.5s, color 0.5s);
+    &:hover {
+      background-color: lighten($sky-green, 10);
+    }
+  }
+}

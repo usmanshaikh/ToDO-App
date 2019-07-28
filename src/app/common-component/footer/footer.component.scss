@@ -1,0 +1,41 @@
+@import "../../.././styles/styles.variable.scss";
+
+.footer--page--wrapper {
+  .footer--bg--color {
+    background-color: $dark-black;
+  }
+  .flex--wrap{
+    @include flexWrap();
+  }
+  .copyright--text {
+    font-size: 10px;
+    padding: 10px 0px;
+    &.info--text {
+      @include flexWrap($justify-content: flex-end);
+    }
+  }
+  .social--icon {
+    font-size: 16px;
+    color: $sky-green;
+    padding: 0px 10px;
+    @include transition(color 0.3s);
+    &:hover {
+      color: lighten($sky-green, 30);
+    }
+    &:nth-child(2) {
+      padding: 0px;
+    }
+  }
+  @media #{$media-small} {
+    .hide{
+      display: none;
+    }
+    .copyright--text {
+      font-size: 12px;
+      padding: 10px 0px;
+      &.info--text {
+        justify-content: normal;
+      }
+    }
+  }
+}

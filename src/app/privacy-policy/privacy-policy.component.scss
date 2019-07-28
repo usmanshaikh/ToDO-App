@@ -1,0 +1,31 @@
+@import "../.././styles/styles.variable.scss";
+.privacy--policy--page--wrapper {
+  padding-bottom: 20px;
+  .content-box {
+    margin: 30px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #2e2e2e;
+  }
+  h4 {
+    color: $white;
+    font-weight: bold;
+  }
+  li {
+    font-size: 15px;
+    margin-bottom: 15px;
+    font-weight: lighter;
+  }
+  @media #{$media-small} {
+    .content-box {
+      margin: 0px;
+      padding: 10px;
+    }
+    h4 {
+      font-size: 20px;
+    }
+    ul {
+      padding-left: 20px;
+    }
+  }
+}

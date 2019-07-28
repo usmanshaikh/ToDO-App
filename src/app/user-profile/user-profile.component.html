@@ -1,0 +1,134 @@
+<div class="user--profile--page--wrapper">
+  <div class="profile--card">
+    <button class="btn btn--icon edit--btn" data-toggle="modal" data-target="#EditProfileModal" mat-button >
+      <i class="fas fa-edit"></i> Edit Profile
+    </button>
+    <div class="image--wrap">
+      <img [src]="imgSrc" class="user--image" alt="user-profile" />
+    </div>
+    <div class="user--name">
+      <p class="name">{{ name }}</p>
+    </div>
+  </div>
+  <div class="todo--detail">
+    <div class="two--grid">
+      <div class="col--1 ">
+        <div class="count--box">
+          <p>{{ activeTaskCount }}</p>
+        </div>
+        <p class="label">Active ToDO</p>
+        <button mat-button data-toggle="modal" class="btn btn--icon"
+          [disabled]="activeTaskCount === 0"
+          [ngClass]="{ disabledBtn: activeTaskCount === 0 }"
+          data-target="#ClearActiveTodoModal">
+          <i class="fas fa-trash"></i>Active ToDO
+        </button>
+      </div>
+      <div class="col--1 ">
+        <div class="count--box">
+          <p>{{ completeTaskCount }}</p>
+        </div>
+        <p class="label">Completed ToDO</p>
+        <button mat-button data-toggle="modal" class="btn btn--icon testing"
+          [disabled]="completeTaskCount === 0"
+          [ngClass]="{ disabledBtn: completeTaskCount === 0 }"
+          data-target="#ClearCompletedTodoModal">
+          <i class="fas fa-trash"></i>Completed ToDO
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade common--modal" id="EditProfileModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <form class="common--form" [formGroup]="registerForm" (ngSubmit)="onSubmit()" >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div>
+              <label class="input--label">Add Profile Image:</label>
+              <div class="custom--choose--file">
+                <input
+                  type="file"
+                  class="choose-file"
+                  id="choose-file"
+                  accept="image/*"
+                  formControlName="imageUrl"
+                  required
+                  (change)="showPreview($event)"
+                />
+                <label for="choose-file" class="upload-file"></label>
+              </div>
+            </div>
+            <div class="input--wrap">
+              <input
+                type="text"
+                formControlName="userName"
+                class="form-control input--form"
+                placeholder="Name *"
+                [ngClass]="{ 'is-invalid': submitted && f.userName.errors }"
+              />
+              <div *ngIf="submitted && f.userName.errors" class="invalid-feedback" >
+                <div *ngIf="f.userName.errors.required">Name is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn--positive" mat-button> Save </button>
+            <button type="button" class="btn btn--negative" data-dismiss="modal" mat-button >Close</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="modal fade common--modal" id="ClearActiveTodoModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Delete ToDo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p class="text-center warning--txt"> Do You Want To Clear All Active ToDO?? </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn--positive" (click)="onClearTask('active')" mat-button >
+            Yes
+          </button>
+          <button type="button" class="btn btn--negative" data-dismiss="modal" mat-button >
+            No
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade common--modal" id="ClearCompletedTodoModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Delete ToDo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p class="text-center warning--txt"> Do You Want To Clear All Completed ToDO?? </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn--positive" (click)="onClearTask('complete')" mat-button >
+            Yes
+          </button>
+          <button type="button" class="btn btn--negative" data-dismiss="modal" mat-button >
+            No
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

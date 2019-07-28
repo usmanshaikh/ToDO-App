@@ -1,0 +1,62 @@
+<div class="sign--up--page--wrapper common--login--page">
+  <div class="user--form--box">
+    <p class="header--txt">Sign up</p>
+    <p class="hyper--txt">- Sign up under 10 secs -</p>
+    <div class="social--icon--wrap">
+      <button class="btn social--icon google" mat-button (click)="signInWithGoogle()" >
+        <i class="fab fa-google-plus-g"></i>
+        Google
+      </button>
+      <button class="btn social--icon facebook" mat-button (click)="signInWithFacebook()" >
+        <i class="fab fa-facebook-f"></i>
+        Facebook
+      </button>
+    </div>
+    <p class="alert--text">{{ socialLoginErrorMsg }}</p>
+    <p class="hyper--txt">- or create account -</p>
+    <form class="common--form" (ngSubmit)="f.form.valid && onSubmit($event)" #f="ngForm" novalidate >
+      <div class="input--wrap space">
+        <input
+          type="text"
+          class="form-control input--form"
+          name="email"
+          placeholder="Email Address *"
+          [(ngModel)]="model.email"
+          #email="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
+          required
+          email
+        />
+        <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+          <div *ngIf="email.errors.required">Email is required</div>
+        </div>
+      </div>
+      <div class="input--wrap space">
+        <input
+          type="password"
+          class="form-control input--form"
+          name="password"
+          placeholder="Create Password *"
+          [(ngModel)]="model.password"
+          #password="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && password.invalid }"
+          required
+          minlength="6"
+        />
+        <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.minlength">
+            Password must be at least 6 characters
+          </div>
+        </div>
+      </div>
+      <div class="input--wrap space">
+        <button type="submit" class="btn login--btn" mat-button> SIGN UP </button>
+      </div>
+    </form>
+    <hr />
+    <p class="bottom--txt">
+      <a [routerLink]="['/sign-in']">Already have account? <b>Login</b> now</a>
+    </p>
+  </div>
+</div>

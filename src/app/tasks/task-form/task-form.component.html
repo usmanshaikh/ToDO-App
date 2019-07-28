@@ -1,0 +1,10 @@
+<div class="task--form--wrapper">
+  <form [formGroup]="toDoForm" (ngSubmit)="onSubmit(toDoForm)">
+    <div class="to-do-tast-input-wrapper">
+      <input type="text" formControlName="taskName" class="tast--input" placeholder="Add a ToDO..." autofocus />
+      <button class="btn btn-primary btn--add" type="submit" [disabled]="!toDoForm.valid" >
+        <i class="fas fa-plus-circle add--icon"></i>
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,150 @@
+@import "../../.././styles/styles.variable.scss";
+
+.task--item--wrapper {
+  .tast--listout-wrapper {
+    padding: 10px;
+    min-height: 190px;
+    border-radius: 5px;
+    background-color: lighten($dark-black, 10);
+  }
+  .no--tast-listout {
+    min-height: 170px;
+    @include flexWrap($justify-content: center);
+  }
+  .no--task--heading {
+    margin: 0px;
+    font-weight: 900;
+    font-style: italic;
+  }
+  .flex--box {
+    @include flexWrap($flex-wrap: nowrap);
+  }
+  .padding--rgt--remove {
+    padding-right: 0px;
+  }
+  .summary--txt {
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    padding: 0px 5px;
+    &::first-letter {
+      text-transform: capitalize;
+    }
+  }
+  .listout--item {
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    border: 1px solid $sky-green;
+    &:last-child {
+      margin-bottom: 0px;
+    }
+  }
+  .completed-txt {
+    color: #8a8a8a;
+    position: relative;
+    text-decoration: line-through;
+    text-decoration-color: $white;
+  }
+  .btn--icon.completed-btn {
+    background-color: #1ac1a4;
+    opacity: 1;
+    .icon--i {
+      color: $white;
+    }
+  }
+  .btn--icon {
+    width: 40px;
+    height: 40px;
+    padding: 0px;
+    opacity: 0.4;
+    margin: 0px 5px;
+    border-radius: 50px;
+    background-color: $dark-black;
+    @include transition(opacity 0.5s);
+    &:hover {
+      opacity: 1;
+    }
+  }
+  .icon--i {
+    font-size: 17px;
+    color: $sky-green;
+  }
+  .three--grid {
+    @include flexWrap();
+    .col--1 {
+      width: 7%;
+    }
+    .col--2 {
+      width: 80%;
+    }
+    .col--3 {
+      width: 13%;
+      justify-content: flex-end;
+    }
+  }
+  @media #{$media-small} {
+    .no--task--heading {
+      font-size: 30px;
+    }
+    .tast--listout-wrapper {
+      padding: 5px;
+    }
+    .three--grid {
+      .col--1 {
+        width: 11%;
+      }
+      .col--2 {
+        width: 68%;
+      }
+      .col--3 {
+        width: 21%;
+      }
+    }
+    .summary--txt {
+      font-size: 15px;
+    }
+    .btn--icon {
+      margin: 0px;
+      width: 30px;
+      height: 30px;
+      &:nth-of-type(2) {
+        margin-left: 5px;
+      }
+    }
+    .icon--i {
+      font-size: 15px;
+    }
+  }
+}
+
+.edit-todo-tast-input-wrapper {
+  position: relative;
+  .tast--input {
+    width: 100%;
+    height: 50px;
+    border: none;
+    font-weight: 900;
+    font-style: italic;
+    text-transform: capitalize;
+    color: lighten($dark-black, 3);
+    background-color: transparent;
+    border-bottom: 2px solid $sky-green !important;
+    &::-webkit-input-placeholder {
+      color: #929292;
+      @include transition(color 0.3s);
+    }
+    &:focus {
+      &::-webkit-input-placeholder {
+        color: $white;
+      }
+    }
+  }
+}
+
+.delete--task--modal {
+  .warning--txt {
+    font-size: 17px;
+    color: #dc3545;
+    font-weight: 900;
+  }
+}
