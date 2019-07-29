@@ -9,11 +9,6 @@ body {
   padding-bottom: 40px;
   font-family: "Roboto";
   background-color: lighten($dark-black, 3);
-  &.keyboardOpen{
-    .footerHide{
-      display: none;
-    }
-  }
 }
 
 .spinner{
@@ -90,7 +85,7 @@ input {
     opacity: 1;
     color: $white;
     line-height: 1;
-    font-weight: 400;
+    font-weight: 500;
     text-shadow: none;
   }
   .modal-footer {
@@ -132,8 +127,7 @@ input {
   .header--txt {
     color: $white;
     font-size: 15px;
-    font-weight: 100;
-    font-weight: bold;
+    font-weight: 500;
     text-align: center;
   }
   .hyper--txt {
@@ -161,9 +155,9 @@ input {
     @include flexWrap($justify-content: space-evenly);
   }
   .social--icon {
-    color: #ffffff;
-    font-weight: 400;
+    color: $white;
     font-size: 13px;
+    font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     &.google {
@@ -204,6 +198,13 @@ input {
 }
 
 @media #{$media-small} {
+  // body {
+  //   &.keyboardOpen{
+  //     .footerHide{
+  //       display: none;
+  //     }
+  //   }
+  // }
   .container {
     padding-left: 10px;
     padding-right: 10px;

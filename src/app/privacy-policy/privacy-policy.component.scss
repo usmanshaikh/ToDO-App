@@ -9,12 +9,11 @@
   }
   h4 {
     color: $white;
-    font-weight: bold;
+    font-weight: 500;
   }
   li {
     font-size: 15px;
     margin-bottom: 15px;
-    font-weight: lighter;
   }
   @media #{$media-small} {
     .content-box {

@@ -71,8 +71,8 @@
                 class="form-control input--form"
                 placeholder="Name *"
                 [ngClass]="{ 'is-invalid': submitted && f.userName.errors }"
-                (focus)="onFocus($event)"
-                (blur)="onBlur($event)"
+                (focus)="onFocus()"
+                (blur)="onBlur()"
               />
               <div *ngIf="submitted && f.userName.errors" class="invalid-feedback" >
                 <div *ngIf="f.userName.errors.required">Name is required</div>
@@ -80,7 +80,9 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn--positive" mat-button> Save </button>
+              <button type="submit" class="btn btn--positive " mat-button> 
+                  <i class="fas fa-spinner fa-spin loadign-spinner" *ngIf="loading"></i> Save 
+                </button>
             <button type="button" class="btn btn--negative" data-dismiss="modal" mat-button >Close</button>
           </div>
         </div>

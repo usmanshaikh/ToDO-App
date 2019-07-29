@@ -20,6 +20,7 @@ export class UserProfileComponent implements OnInit,OnDestroy {
   currentUserId: string;
   registerForm: FormGroup;
   activeTaskCount: number;
+  loading: boolean = false;
   selectedImage: any = null;
   completeTaskCount: number;
   submitted: boolean = false;
@@ -62,6 +63,7 @@ export class UserProfileComponent implements OnInit,OnDestroy {
   onSubmit() {
     this.submitted = true;
     if (this.registerForm.valid) {
+      this.loading = true;
       var filePath = `${this.currentUserId}/${this.selectedImage.name.split(".").slice(0, -1).join(".")}`;
       const fileRef = this.angularFireStorage.ref(filePath);
       this.angularFireStorage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
@@ -90,6 +92,7 @@ export class UserProfileComponent implements OnInit,OnDestroy {
     this.imgSrc = "../../assets/placeholder.jpg";
     this.selectedImage = null;
     this.submitted = false;
+    this.loading = false;
   }
 
   loadUserProfile() {

@@ -12,7 +12,6 @@
         Facebook
       </button>
     </div>
-    <p class="alert--text">{{ socialLoginErrorMsg }}</p>
     <p class="hyper--txt">- or create account -</p>
     <form class="common--form" (ngSubmit)="f.form.valid && onSubmit($event)" #f="ngForm" novalidate >
       <div class="input--wrap space">
@@ -26,6 +25,8 @@
           [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
           required
           email
+          (focus)="onFocus()"
+          (blur)="onBlur()"
         />
         <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
           <div *ngIf="email.errors.required">Email is required</div>
@@ -42,6 +43,8 @@
           [ngClass]="{ 'is-invalid': f.submitted && password.invalid }"
           required
           minlength="6"
+          (focus)="onFocus()"
+          (blur)="onBlur()"
         />
         <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
           <div *ngIf="password.errors.required">Password is required</div>
@@ -50,6 +53,7 @@
           </div>
         </div>
       </div>
+      <p class="alert--text">{{ loginErrorMsg }}</p>
       <div class="input--wrap space">
         <button type="submit" class="btn login--btn" mat-button> SIGN UP </button>
       </div>
