@@ -13,19 +13,29 @@ import { DOCUMENT } from '@angular/common';
 export class SignUpComponent implements OnInit {
   model: any = {};
   loginErrorMsg:string;
+  loadingFacebook: boolean = false;
+  loadingGoogle: boolean = false;
 
   constructor(private authService: AuthService, private router: Router,@Inject(DOCUMENT) private document: Document) {}
 
-  signInWithFacebook() {
+  signInWithFacebook(event) {
+    this.loadingFacebook = true;
     this.authService.signInWithFacebook()
     .then(() => this.router.navigate(["/"]))
-    .catch(() => this.loginErrorMsg = this.authService.socialLoginErrorMsg);
+    .catch(() => {
+      this.loginErrorMsg = this.authService.socialLoginErrorMsg;
+      this.loadingFacebook = false;
+    });
   }
 
-  signInWithGoogle() {
+  signInWithGoogle(event) {
+    this.loadingGoogle = true;
     this.authService.signInWithGoogle()
     .then(() => this.router.navigate(["/"]))
-    .catch(() => this.loginErrorMsg = this.authService.socialLoginErrorMsg);
+    .catch(() => {
+      this.loginErrorMsg = this.authService.socialLoginErrorMsg;
+      this.loadingGoogle = false;
+    });
   }
 
   onSubmit(form: NgForm) {
@@ -40,6 +50,6 @@ export class SignUpComponent implements OnInit {
 
   onBlur(){ this.document.body.classList.remove('keyboardOpen'); }
 
-  ngOnInit() {}
+  ngOnInit() { this.loadingGoogle = false; this.loadingFacebook = false; }
   
 }

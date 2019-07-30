@@ -3,13 +3,13 @@
     <p class="header--txt">Log in</p>
     <p class="hyper--txt">- Log in with -</p>
     <div class="social--icon--wrap">
-      <button class="btn social--icon google" mat-button (click)="signInWithGoogle()" >
-        <i class="fab fa-google-plus-g"></i>
-        Google
+      <button class="btn social--icon google" mat-button (click)="signInWithGoogle($event)"> 
+          <i class="fas fa-spinner fa-spin loadign-spinner" *ngIf="loadingGoogle"></i>
+          <i class="fab fa-google-plus-g"></i> Google 
       </button>
-      <button class="btn social--icon facebook" mat-button (click)="signInWithFacebook()" >
-        <i class="fab fa-facebook-f"></i>
-        Facebook
+      <button class="btn social--icon facebook" mat-button (click)="signInWithFacebook($event)"> 
+          <i class="fas fa-spinner fa-spin loadign-spinner" *ngIf="loadingFacebook"></i>
+          <i class="fab fa-facebook-f"></i> Facebook 
       </button>
     </div>
     <p class="hyper--txt">- or use email address -</p>
