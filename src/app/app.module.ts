@@ -28,6 +28,7 @@ import { AuthService } from './auth/auth.service';
 import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { UserProfileService } from './user-profile/user-profile.service';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [TaskService,AuthService,UserProfileService],
   bootstrap: [AppComponent]
