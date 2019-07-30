@@ -2,7 +2,7 @@
   "name": "ToDo",
   "short_name": "ToDo",
   "theme_color": "#141414",
-  "background_color": "#fafafa",
+  "background_color": "#141414",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",

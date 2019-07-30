@@ -1,6 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
-import { timer } from "rxjs";
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'task',
@@ -8,26 +6,10 @@ import { timer } from "rxjs";
   styleUrls: ['./task.component.scss']
 })
 
-export class TaskComponent implements OnInit, OnDestroy {
-  timer: Observable<any>;
-  showloader: boolean = false;
-  subscription: Subscription = new Subscription();
+export class TaskComponent implements OnInit{
   
-  constructor() { 
-    window.onbeforeunload = function(e) {
-      localStorage.removeItem('spinner');
-    };
-  }
+  constructor() {}
 
-  setTimer() {
-    this.showloader = true;
-    this.timer = timer(4500);
-    this.subscription.add( this.timer.subscribe(() => { this.showloader = false; }) );
-    localStorage.setItem("spinner", 'true');
-  }
-
-  ngOnInit() { if (localStorage.getItem("spinner") === null) { this.setTimer(); } }
-
-  ngOnDestroy() { this.subscription.unsubscribe(); }
+  ngOnInit() {}
 
 }

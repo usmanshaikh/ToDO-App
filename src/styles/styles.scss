@@ -10,16 +10,30 @@ body {
   background-color: lighten($dark-black, 3);
 }
 
-.spinner{
+.spinner {
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 9999;
   position: fixed;
+  opacity: 1;
   background-color: lighten($dark-black, 3);
   @include flexWrap($align-items:center,$justify-content: center);
+  .loading--img {
+    width: 50px;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-play-state: running;
+    -webkit-animation: splashScreenHide 2s;
+    animation-iteration-count: 1;
+    animation-play-state: running;
+    animation: splashScreenHide 2s;
+  }
 }
+
+@-webkit-keyframes splashScreenHide { 0%   {    opacity: 1;} 50% {    opacity: 0.5;} 100% {    opacity: 0;} }
+
+@keyframes splashScreenHide { 0%   {    opacity: 1;} 50% {    opacity: 0.5;} 100% {    opacity: 0;} }
 
 .mat-progress-spinner circle, .mat-spinner circle { stroke: #1ac1a4; }
 
