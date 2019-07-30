@@ -7,7 +7,10 @@ body {
   color: $sky-green;
   overflow-y: scroll;
   font-family: "Roboto";
-  background-color: lighten($dark-black, 3);
+  background-color: $white;
+  &.blackBackground{
+    background-color: lighten($dark-black, 3);
+  }
 }
 
 .spinner {
@@ -18,7 +21,8 @@ body {
   z-index: 9999;
   position: fixed;
   opacity: 1;
-  background-color: lighten($dark-black, 3);
+  background-color: $white;
+  // background-color: lighten($dark-black, 3);
   @include flexWrap($align-items:center,$justify-content: center);
   .loading--img {
     width: 50px;
