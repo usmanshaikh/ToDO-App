@@ -22,7 +22,6 @@ body {
   position: fixed;
   opacity: 1;
   background-color: $white;
-  // background-color: lighten($dark-black, 3);
   @include flexWrap($align-items:center,$justify-content: center);
   .loading--img {
     width: 50px;
@@ -35,9 +34,13 @@ body {
   }
 }
 
-@-webkit-keyframes splashScreenHide { 0%   {    opacity: 1;} 50% {    opacity: 0.5;} 100% {    opacity: 0;} }
+@-webkit-keyframes splashScreenHide {
+  0% { opacity: 1; } 10% { opacity: 0.9; } 20% { opacity: 0.8; } 30% { opacity: 0.7; } 40% { opacity: 0.6; } 50% { opacity: 0.5; } 60% { opacity: 0.4; } 70% { opacity: 0.3; } 80% { opacity: 0.2; } 90% { opacity: 0.1; } 100% { opacity: 0; }
+}
 
-@keyframes splashScreenHide { 0%   {    opacity: 1;} 50% {    opacity: 0.5;} 100% {    opacity: 0;} }
+@keyframes splashScreenHide { 
+  0% { opacity: 1; } 10% { opacity: 0.9; } 20% { opacity: 0.8; } 30% { opacity: 0.7; } 40% { opacity: 0.6; } 50% { opacity: 0.5; } 60% { opacity: 0.4; } 70% { opacity: 0.3; } 80% { opacity: 0.2; } 90% { opacity: 0.1; } 100% { opacity: 0; }
+}
 
 .mat-progress-spinner circle, .mat-spinner circle { stroke: #1ac1a4; }
 
