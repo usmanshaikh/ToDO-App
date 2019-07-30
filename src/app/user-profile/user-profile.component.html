@@ -58,10 +58,10 @@
                   id="choose-file"
                   accept="image/*"
                   formControlName="imageUrl"
-                  required
                   (change)="showPreview($event)"
                 />
                 <label for="choose-file" class="upload-file"></label>
+                <span>{{ fileCount }}</span>
               </div>
             </div>
             <div class="input--wrap">

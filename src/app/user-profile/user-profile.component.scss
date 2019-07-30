@@ -127,9 +127,6 @@
     label.upload-file::before {
       content: "Choose file";
     }
-    .choose-file:valid + .upload-file::before {
-      content: "1 file chosen";
-    }
   }
   @media #{$media-small} {
     .btn--icon.edit--btn {

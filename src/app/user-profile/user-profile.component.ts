@@ -17,6 +17,7 @@ import { DOCUMENT } from '@angular/common';
 export class UserProfileComponent implements OnInit,OnDestroy {
   name: string;
   imgSrc: string;
+  fileCount:string;
   currentUserId: string;
   registerForm: FormGroup;
   activeTaskCount: number;
@@ -54,6 +55,7 @@ export class UserProfileComponent implements OnInit,OnDestroy {
       reader.onload = (e: any) => (this.imgSrc = e.target.result);
       reader.readAsDataURL(event.target.files[0]);
       this.selectedImage = event.target.files[0];
+      this.fileCount = "1 File Chosen"
     } else {
       this.imgSrc = "../../assets/placeholder.jpg";
       this.selectedImage = null;
@@ -64,35 +66,48 @@ export class UserProfileComponent implements OnInit,OnDestroy {
     this.submitted = true;
     if (this.registerForm.valid) {
       this.loading = true;
-      var filePath = `${this.currentUserId}/${this.selectedImage.name.split(".").slice(0, -1).join(".")}`;
-      const fileRef = this.angularFireStorage.ref(filePath);
-      this.angularFireStorage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
-          finalize(() => {
-            fileRef.getDownloadURL().subscribe(url => {
-              const setImageUrl = {
-                image: this.registerForm.controls["imageUrl"] = url,
-                name: this.registerForm.controls[ "userName" ] = this.registerForm.controls["userName"].value
-              };
-              this.userProfileService.saveUserDetails( setImageUrl, this.currentUserId );
-              this.resetForm();
-              this.loadUserProfile;
-            });
-          })
-        ).subscribe();
+      if (this.selectedImage === null) {
+        const setImageUrl = {
+          image: this.imgSrc,
+          name: this.registerForm.controls[ "userName" ] = this.registerForm.controls["userName"].value
+        };
+        this.pushDataToService(setImageUrl);
+      } else {
+        var filePath = `${this.currentUserId}/${this.selectedImage.name.split(".").slice(0, -1).join(".")}`;
+        const fileRef = this.angularFireStorage.ref(filePath);
+        this.angularFireStorage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
+            finalize(() => {
+              fileRef.getDownloadURL().subscribe(url => {
+                const setImageUrl = {
+                  image: this.registerForm.controls["imageUrl"] = url,
+                  name: this.registerForm.controls[ "userName" ] = this.registerForm.controls["userName"].value
+                };
+                this.pushDataToService(setImageUrl);
+              });
+            })
+          ).subscribe();
+      }
     }
   }
 
   get f() { return this.registerForm.controls; }
 
+  pushDataToService(setImageUrl){
+    this.userProfileService.saveUserDetails( setImageUrl, this.currentUserId );
+    this.resetForm();
+    this.loadUserProfile;
+  }
+
   resetForm() {
     this.registerForm = this.formBuilder.group({
-      imageUrl: ["", Validators.required],
+      imageUrl: [""],
       userName: ["", Validators.required]
     });
     this.imgSrc = "../../assets/placeholder.jpg";
     this.selectedImage = null;
     this.submitted = false;
     this.loading = false;
+    this.fileCount = ""
   }
 
   loadUserProfile() {
