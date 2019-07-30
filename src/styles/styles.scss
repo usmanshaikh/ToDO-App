@@ -6,7 +6,6 @@ body {
   padding-top: 67px;
   color: $sky-green;
   overflow-y: scroll;
-  padding-bottom: 40px;
   font-family: "Roboto";
   background-color: lighten($dark-black, 3);
 }
@@ -43,12 +42,6 @@ input {
 }
 
 * {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   &::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -152,7 +145,7 @@ input {
     text-align: center;
   }
   .social--icon--wrap {
-    @include flexWrap($justify-content: space-evenly);
+    @include flexWrap($justify-content: space-around);
   }
   .social--icon {
     color: $white;

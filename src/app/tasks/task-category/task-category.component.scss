@@ -30,7 +30,7 @@
   }
   @media #{$media-small} {
     .list--wrap {
-      @include flexWrap($justify-content: space-evenly);
+      @include flexWrap($justify-content: space-around);
       .list--item {
         font-size: 14px;
         padding: 5px 10px;
