@@ -29,6 +29,8 @@ body {
 
 .mat-drawer-container { position: static !important; }
 
+.mat-drawer-content { display: inline !important; }
+
 .mat-drawer { left: 0; width: 70%; z-index: 9999 !important; }
 
 p {
