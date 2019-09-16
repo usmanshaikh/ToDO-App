@@ -1,6 +1,8 @@
 # ToDoApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
+Angular ToDo App and I used Firebase Cloud Firestore to store user data.
+
+![alt app1](app1.jpg)
 
 ## Development server
 
