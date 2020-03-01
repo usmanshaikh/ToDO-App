@@ -15,6 +15,16 @@
   justify-content: $justify;
 }
 
+@mixin fluidWH($w: 100%, $h: 100%) {
+  width: $w;
+  height: $h;
+}
+
+@mixin objectFit($fit: cover) {
+  -o-object-fit: $fit;
+  object-fit: $fit;
+}
+
 @mixin transition($args...) {
   -webkit-transition: $args;
   -o-transition: $args;

@@ -16,12 +16,11 @@ body {
 .spinner {
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
   z-index: 9999;
   position: fixed;
   opacity: 1;
   background-color: $white;
+  @include fluidWH($w: 100%, $h: 100%);
   @include flexbox($align: center, $justify: center);
   .loading--img {
     width: 50px;
@@ -151,8 +150,7 @@ input {
 
 * {
   &::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    @include fluidWH($w: 6px, $h: 6px);
   }
   &::-webkit-scrollbar-track {
     background: $white;

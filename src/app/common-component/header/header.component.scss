@@ -9,10 +9,9 @@
     @include flexbox();
   }
   .user--avatar {
-    width: 35px;
-    height: 35px;
-    object-fit: cover;
     border-radius: 50px;
+    @include objectFit();
+    @include fluidWH($w: 35px, $h: 35px);
   }
   .navbar--logo {
     width: 40px;
@@ -78,9 +77,8 @@
         color: #333333;
       }
       .user--avatar {
-        width: 80px;
-        height: 80px;
         margin-right: 10px;
+        @include fluidWH($w: 80px, $h: 80px);
       }
     }
     .menu--item {

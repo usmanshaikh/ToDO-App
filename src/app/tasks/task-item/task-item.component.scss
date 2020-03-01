@@ -49,14 +49,14 @@
     }
   }
   .btn--icon {
-    width: 40px;
-    height: 40px;
+    
     padding: 0px;
     opacity: 0.4;
     margin: 0px 5px;
     border-radius: 50px;
     background-color: $dark-black;
     @include transition(opacity 0.5s);
+    @include fluidWH($w: 40px, $h: 40px);
     &:hover {
       opacity: 1;
     }
@@ -101,8 +101,7 @@
     }
     .btn--icon {
       margin: 0px;
-      width: 30px;
-      height: 30px;
+      @include fluidWH($w: 30px, $h: 30px);
       &:nth-of-type(2) {
         margin-left: 5px;
       }
