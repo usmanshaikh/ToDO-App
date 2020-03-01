@@ -23,3 +23,10 @@ https://itnext.io/step-by-step-complete-firebase-authentication-in-angular-2-97c
 
 Setting up OAuth 2.0
 https://support.google.com/cloud/answer/6158849?hl=en#authorized-domains
+
+
+firebase logout
+firebase login
+ng build --prod
+firebase deploy
+
