@@ -12,6 +12,7 @@
 
 # Firbase Detail
 /src/environments
+/src/usman
 
 # profiling files
 chrome-profiler-events.json
