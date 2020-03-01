@@ -11,8 +11,7 @@
 /node_modules
 
 # Firbase Detail
-/src/environmentss
-/src/usman
+/src/environments
 
 # profiling files
 chrome-profiler-events.json
