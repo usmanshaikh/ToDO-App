@@ -1,6 +1,11 @@
 <div class="user--profile--page--wrapper">
   <div class="profile--card">
-    <button class="btn btn--icon edit--btn" data-toggle="modal" data-target="#EditProfileModal" mat-button >
+    <button
+      class="btn btn--icon edit--btn"
+      data-toggle="modal"
+      data-target="#EditProfileModal"
+      mat-button
+    >
       <i class="fas fa-edit"></i> Edit Profile
     </button>
     <div class="image--wrap">
@@ -17,10 +22,14 @@
           <p>{{ activeTaskCount }}</p>
         </div>
         <p class="label">Active ToDO</p>
-        <button mat-button data-toggle="modal" class="btn btn--icon"
+        <button
+          mat-button
+          data-toggle="modal"
+          class="btn btn--icon"
           [disabled]="activeTaskCount === 0"
           [ngClass]="{ disabledBtn: activeTaskCount === 0 }"
-          data-target="#ClearActiveTodoModal">
+          data-target="#ClearActiveTodoModal"
+        >
           <i class="fas fa-trash"></i>Active ToDO
         </button>
       </div>
@@ -29,10 +38,14 @@
           <p>{{ completeTaskCount }}</p>
         </div>
         <p class="label">Completed ToDO</p>
-        <button mat-button data-toggle="modal" class="btn btn--icon testing"
+        <button
+          mat-button
+          data-toggle="modal"
+          class="btn btn--icon testing"
           [disabled]="completeTaskCount === 0"
           [ngClass]="{ disabledBtn: completeTaskCount === 0 }"
-          data-target="#ClearCompletedTodoModal">
+          data-target="#ClearCompletedTodoModal"
+        >
           <i class="fas fa-trash"></i>Completed ToDO
         </button>
       </div>
@@ -40,11 +53,20 @@
   </div>
   <div class="modal fade common--modal" id="EditProfileModal">
     <div class="modal-dialog modal-dialog-centered">
-      <form class="common--form" [formGroup]="registerForm" (ngSubmit)="onSubmit()" >
+      <form
+        class="common--form"
+        [formGroup]="registerForm"
+        (ngSubmit)="onSubmit()"
+      >
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -74,16 +96,30 @@
                 (focus)="onFocus()"
                 (blur)="onBlur()"
               />
-              <div *ngIf="submitted && f.userName.errors" class="invalid-feedback" >
+              <div
+                *ngIf="submitted && f.userName.errors"
+                class="invalid-feedback"
+              >
                 <div *ngIf="f.userName.errors.required">Name is required</div>
               </div>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn--positive " mat-button> 
-              <i class="fas fa-spinner fa-spin loadign-spinner" *ngIf="loading"></i> Save 
+            <button type="submit" class="btn btn--positive " mat-button>
+              <i
+                class="fas fa-spinner fa-spin loadign-spinner"
+                *ngIf="loading"
+              ></i>
+              Save
             </button>
-            <button type="button" class="btn btn--negative" data-dismiss="modal" mat-button >Close</button>
+            <button
+              type="button"
+              class="btn btn--negative"
+              data-dismiss="modal"
+              mat-button
+            >
+              Close
+            </button>
           </div>
         </div>
       </form>
@@ -94,18 +130,35 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Delete ToDo</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <p class="text-center warning--txt"> Do You Want To Clear All Active ToDO?? </p>
+          <p class="text-center warning--txt">
+            Do You Want To Clear All Active ToDO??
+          </p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn--positive" (click)="onClearTask('active')" mat-button >
+          <button
+            type="button"
+            class="btn btn--positive"
+            (click)="onClearTask('active')"
+            mat-button
+          >
             Yes
           </button>
-          <button type="button" class="btn btn--negative" data-dismiss="modal" mat-button >
+          <button
+            type="button"
+            class="btn btn--negative"
+            data-dismiss="modal"
+            mat-button
+          >
             No
           </button>
         </div>
@@ -117,18 +170,35 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Delete ToDo</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <p class="text-center warning--txt"> Do You Want To Clear All Completed ToDO?? </p>
+          <p class="text-center warning--txt">
+            Do You Want To Clear All Completed ToDO??
+          </p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn--positive" (click)="onClearTask('complete')" mat-button >
+          <button
+            type="button"
+            class="btn btn--positive"
+            (click)="onClearTask('complete')"
+            mat-button
+          >
             Yes
           </button>
-          <button type="button" class="btn btn--negative" data-dismiss="modal" mat-button >
+          <button
+            type="button"
+            class="btn btn--negative"
+            data-dismiss="modal"
+            mat-button
+          >
             No
           </button>
         </div>

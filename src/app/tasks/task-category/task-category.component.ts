@@ -7,7 +7,6 @@ import { Subscription } from "rxjs";
   templateUrl: "./task-category.component.html",
   styleUrls: ["./task-category.component.scss"]
 })
-
 export class TaskCategoryComponent implements OnInit, OnDestroy {
   button1: boolean = false;
   button2: boolean = false;
@@ -45,8 +44,11 @@ export class TaskCategoryComponent implements OnInit, OnDestroy {
     this.taskService.completeTask.next(true);
   }
 
-  ngOnInit() { this.button1 = true; }
+  ngOnInit() {
+    this.button1 = true;
+  }
 
-  ngOnDestroy() { this.subscription.unsubscribe(); }
-  
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }

@@ -3,12 +3,14 @@ import { Router } from "@angular/router";
 import { User } from "./user";
 import * as firebase from "firebase/app";
 import { AngularFireAuth } from "@angular/fire/auth";
-import { AngularFirestoreDocument, AngularFirestore } from "@angular/fire/firestore";
+import {
+  AngularFirestoreDocument,
+  AngularFirestore
+} from "@angular/fire/firestore";
 
 @Injectable({
   providedIn: "root"
 })
-
 export class AuthService {
   userData: any;
   isLoggedin: boolean = false;
@@ -35,24 +37,34 @@ export class AuthService {
 
   async signInWithGoogle() {
     const provider = new firebase.auth.GoogleAuthProvider();
-    const credential = await this.angularFireAuth.auth.signInWithPopup(provider);
+    const credential = await this.angularFireAuth.auth.signInWithPopup(
+      provider
+    );
     return this.setUserData(credential.user);
   }
 
   async signInWithFacebook() {
     const provider = new firebase.auth.FacebookAuthProvider();
-    const credential = await this.angularFireAuth.auth.signInWithPopup(provider);
+    const credential = await this.angularFireAuth.auth.signInWithPopup(
+      provider
+    );
     return this.setUserData(credential.user);
   }
 
   loginWithEmailAddress(email: string, password: string) {
-    return this.angularFireAuth.auth.signInWithEmailAndPassword(email, password)
-      .then(value => { this.setUserData(value.user); });
+    return this.angularFireAuth.auth
+      .signInWithEmailAndPassword(email, password)
+      .then(value => {
+        this.setUserData(value.user);
+      });
   }
 
   registerWithEmailAddress(email: string, password: string) {
-    return this.angularFireAuth.auth.createUserWithEmailAndPassword(email, password)
-      .then(value => { this.setUserData(value.user); });
+    return this.angularFireAuth.auth
+      .createUserWithEmailAndPassword(email, password)
+      .then(value => {
+        this.setUserData(value.user);
+      });
   }
 
   get isLoggedIn(): boolean {
@@ -70,8 +82,7 @@ export class AuthService {
   }
 
   logout() {
-    return this.angularFireAuth.auth.signOut()
-    .then(() => { 
+    return this.angularFireAuth.auth.signOut().then(() => {
       localStorage.removeItem("user");
       localStorage.removeItem("spinner");
       this.router.navigate(["/sign-in"]);
@@ -79,7 +90,9 @@ export class AuthService {
   }
 
   setUserData(user) {
-    const userRef: AngularFirestoreDocument<any> = this.angularFirestore.doc( `users/${user.uid}` );
+    const userRef: AngularFirestoreDocument<any> = this.angularFirestore.doc(
+      `users/${user.uid}`
+    );
     const userData: User = {
       uid: user.uid,
       email: user.email

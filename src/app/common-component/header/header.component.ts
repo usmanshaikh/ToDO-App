@@ -9,7 +9,6 @@ import { Subscription } from "rxjs";
   templateUrl: "./header.component.html",
   styleUrls: ["./header.component.scss"]
 })
-
 export class HeaderComponent implements OnInit, OnDestroy {
   userImage: string;
   userName: string;
@@ -22,27 +21,38 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private angularFireAuth: AngularFireAuth
   ) {
     this.angularFireAuth.authState.subscribe(user => {
-      if (user) { this.currentUserId = user.uid; this.loadUserProfile(); }
+      if (user) {
+        this.currentUserId = user.uid;
+        this.loadUserProfile();
+      }
     });
   }
 
-  onLogout() { this.authService.logout(); }
+  onLogout() {
+    this.authService.logout();
+  }
 
   loadUserProfile() {
     this.subscription.add(
-      this.userProfileService.getUserProfile(this.currentUserId).subscribe(response => {
-        if (typeof response !== 'undefined' && response.length > 0) {
-          response.map(val => { this.userImage = val.image; this.userName = val.name; });
-        }else{
-          this.userImage = '../../../assets/avatar.png';
-          this.userName = 'Your Name';
-        }
-      })
+      this.userProfileService
+        .getUserProfile(this.currentUserId)
+        .subscribe(response => {
+          if (typeof response !== "undefined" && response.length > 0) {
+            response.map(val => {
+              this.userImage = val.image;
+              this.userName = val.name;
+            });
+          } else {
+            this.userImage = "../../../assets/avatar.png";
+            this.userName = "Your Name";
+          }
+        })
     );
   }
 
   ngOnInit() {}
 
-  ngOnDestroy() { this.subscription.unsubscribe(); }
-
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }

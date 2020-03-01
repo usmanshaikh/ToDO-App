@@ -1,4 +1,4 @@
-@import "../../.././styles/styles.variable.scss";
+@import "../../.././styles/_mixin_variables.scss";
 
 .task--list--wrapper {
   .list--wrap {
@@ -30,7 +30,7 @@
   }
   @media #{$media-small} {
     .list--wrap {
-      @include flexWrap($justify-content: space-around);
+      @include flexbox($justify: space-around);
       .list--item {
         font-size: 14px;
         padding: 5px 10px;

@@ -5,19 +5,18 @@ import { AngularFirestore } from "@angular/fire/firestore";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { Component, OnInit, OnDestroy, Inject } from "@angular/core";
 import { finalize } from "rxjs/operators";
-import { Subscription } from 'rxjs';
-import { DOCUMENT } from '@angular/common';
+import { Subscription } from "rxjs";
+import { DOCUMENT } from "@angular/common";
 
 @Component({
   selector: "user-profile",
   templateUrl: "./user-profile.component.html",
   styleUrls: ["./user-profile.component.scss"]
 })
-
-export class UserProfileComponent implements OnInit,OnDestroy {
+export class UserProfileComponent implements OnInit, OnDestroy {
   name: string;
   imgSrc: string;
-  fileCount:string;
+  fileCount: string;
   currentUserId: string;
   registerForm: FormGroup;
   activeTaskCount: number;
@@ -34,19 +33,28 @@ export class UserProfileComponent implements OnInit,OnDestroy {
     private angularFirestore: AngularFirestore,
     private userProfileService: UserProfileService,
     private angularFireStorage: AngularFireStorage,
-    @Inject(DOCUMENT) private document: Document,
+    @Inject(DOCUMENT) private document: Document
   ) {
     this.subscription.add(
       this.angularFireAuth.authState.subscribe(user => {
         if (user) {
-        this.currentUserId = user.uid;
-        this.loadUserProfile();
-        this.firebasePath.doc(this.currentUserId).collection("task").valueChanges().subscribe(values => {
-          this.activeTaskCount = values.filter( value => value.status === "active" ).length;
-          this.completeTaskCount = values.filter( value => value.status === "complete" ).length;
-          });
+          this.currentUserId = user.uid;
+          this.loadUserProfile();
+          this.firebasePath
+            .doc(this.currentUserId)
+            .collection("task")
+            .valueChanges()
+            .subscribe(values => {
+              this.activeTaskCount = values.filter(
+                value => value.status === "active"
+              ).length;
+              this.completeTaskCount = values.filter(
+                value => value.status === "complete"
+              ).length;
+            });
         }
-    }));
+      })
+    );
   }
 
   showPreview(event: any) {
@@ -55,7 +63,7 @@ export class UserProfileComponent implements OnInit,OnDestroy {
       reader.onload = (e: any) => (this.imgSrc = e.target.result);
       reader.readAsDataURL(event.target.files[0]);
       this.selectedImage = event.target.files[0];
-      this.fileCount = "1 File Chosen"
+      this.fileCount = "1 File Chosen";
     } else {
       this.imgSrc = "../../assets/placeholder.jpg";
       this.selectedImage = null;
@@ -69,31 +77,44 @@ export class UserProfileComponent implements OnInit,OnDestroy {
       if (this.selectedImage === null) {
         const setImageUrl = {
           image: this.imgSrc,
-          name: this.registerForm.controls[ "userName" ] = this.registerForm.controls["userName"].value
+          name: this.registerForm.controls[
+            "userName"
+          ] = this.registerForm.controls["userName"].value
         };
         this.pushDataToService(setImageUrl);
       } else {
-        var filePath = `${this.currentUserId}/${this.selectedImage.name.split(".").slice(0, -1).join(".")}`;
+        var filePath = `${this.currentUserId}/${this.selectedImage.name
+          .split(".")
+          .slice(0, -1)
+          .join(".")}`;
         const fileRef = this.angularFireStorage.ref(filePath);
-        this.angularFireStorage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
+        this.angularFireStorage
+          .upload(filePath, this.selectedImage)
+          .snapshotChanges()
+          .pipe(
             finalize(() => {
               fileRef.getDownloadURL().subscribe(url => {
                 const setImageUrl = {
                   image: this.registerForm.controls["imageUrl"] = url,
-                  name: this.registerForm.controls[ "userName" ] = this.registerForm.controls["userName"].value
+                  name: this.registerForm.controls[
+                    "userName"
+                  ] = this.registerForm.controls["userName"].value
                 };
                 this.pushDataToService(setImageUrl);
               });
             })
-          ).subscribe();
+          )
+          .subscribe();
       }
     }
   }
 
-  get f() { return this.registerForm.controls; }
+  get f() {
+    return this.registerForm.controls;
+  }
 
-  pushDataToService(setImageUrl){
-    this.userProfileService.saveUserDetails( setImageUrl, this.currentUserId );
+  pushDataToService(setImageUrl) {
+    this.userProfileService.saveUserDetails(setImageUrl, this.currentUserId);
     this.resetForm();
     this.loadUserProfile;
   }
@@ -107,43 +128,58 @@ export class UserProfileComponent implements OnInit,OnDestroy {
     this.selectedImage = null;
     this.submitted = false;
     this.loading = false;
-    this.fileCount = ""
+    this.fileCount = "";
   }
 
   loadUserProfile() {
     this.subscription.add(
-      this.userProfileService.getUserProfile(this.currentUserId).subscribe(response => {
-        if (typeof response !== 'undefined' && response.length > 0) {
-          response.map(val => { this.imgSrc = val.image; this.name = val.name; });
-        }else{
-          this.imgSrc = '../../../assets/avatar.png';
-          this.name = 'Your Name';
-        }
-      })
+      this.userProfileService
+        .getUserProfile(this.currentUserId)
+        .subscribe(response => {
+          if (typeof response !== "undefined" && response.length > 0) {
+            response.map(val => {
+              this.imgSrc = val.image;
+              this.name = val.name;
+            });
+          } else {
+            this.imgSrc = "../../../assets/avatar.png";
+            this.name = "Your Name";
+          }
+        })
     );
   }
 
   onClearTask(taskStatus: string) {
-    this.firebasePath.doc(this.currentUserId)
+    this.firebasePath
+      .doc(this.currentUserId)
       .collection("task", ref => ref.where("status", "==", taskStatus))
       .get()
       .forEach(querySnapshot => {
         const batch = this.angularFirestore.firestore.batch();
-        querySnapshot.forEach(doc => { batch.delete(doc.ref); });
+        querySnapshot.forEach(doc => {
+          batch.delete(doc.ref);
+        });
         return batch.commit();
       })
-      .then(()=> {
+      .then(() => {
         document.getElementById("ClearCompletedTodoModal").click();
         document.getElementById("ClearActiveTodoModal").click();
       });
   }
 
-  onFocus(){ this.document.body.classList.add('keyboardOpen'); }
+  onFocus() {
+    this.document.body.classList.add("keyboardOpen");
+  }
 
-  onBlur(){ this.document.body.classList.remove('keyboardOpen'); }
+  onBlur() {
+    this.document.body.classList.remove("keyboardOpen");
+  }
 
-  ngOnInit() { this.resetForm(); }
+  ngOnInit() {
+    this.resetForm();
+  }
 
-  ngOnDestroy(){ this.subscription.unsubscribe(); }
-
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }

@@ -6,7 +6,6 @@ import { Subject } from "rxjs";
 @Injectable({
   providedIn: "root"
 })
-
 export class TaskService {
   viewAllTask = new Subject<any>();
   activeTask = new Subject<any>();
@@ -26,7 +25,12 @@ export class TaskService {
 
   saveTodo(data: Array<any>) {
     let dateCreated = firebase.firestore.FieldValue.serverTimestamp();
-    const itemData = { taskMsg: data[0], status: data[1], id: data[2], created: dateCreated };
+    const itemData = {
+      taskMsg: data[0],
+      status: data[1],
+      id: data[2],
+      created: dateCreated
+    };
     this.firebasePath
       .doc(data[3])
       .collection("task")

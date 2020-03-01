@@ -1,17 +1,18 @@
-@mixin flexWrap(
-  $flex-wrap: wrap,
-  $align-items: center,
-  $justify-content: normal
-) {
+@mixin flexbox($wrap: wrap, $justify: space-between, $align: center) {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: $flex-wrap;
-  flex-wrap: $flex-wrap;
-  -webkit-box-align: $align-items;
-  -ms-flex-align: $align-items;
-  align-items: $align-items;
-  justify-content: $justify-content;
+
+  -ms-flex-wrap: $wrap;
+  flex-wrap: $wrap;
+
+  -webkit-box-align: $align;
+  -ms-flex-align: $align;
+  align-items: $align;
+
+  -webkit-box-pack: $justify;
+  -ms-flex-pack: $justify;
+  justify-content: $justify;
 }
 
 @mixin transition($args...) {

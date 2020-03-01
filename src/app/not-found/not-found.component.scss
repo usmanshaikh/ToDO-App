@@ -1,8 +1,8 @@
-@import "../.././styles/styles.variable.scss";
+@import "../.././styles/_mixin_variables.scss";
 
 .not--found--page--wrapper {
   height: 70vh;
-  @include flexWrap($justify-content: center);
+  @include flexbox($justify: center);
   .center--wrap {
     text-align: center;
   }

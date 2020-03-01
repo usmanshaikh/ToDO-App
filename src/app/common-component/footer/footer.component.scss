@@ -1,17 +1,17 @@
-@import "../../.././styles/styles.variable.scss";
+@import "../../.././styles/_mixin_variables.scss";
 
 .footer--page--wrapper {
   .footer--bg--color {
     background-color: $dark-black;
   }
-  .flex--wrap{
-    @include flexWrap();
+  .flex--wrap {
+    @include flexbox();
   }
   .copyright--text {
     font-size: 10px;
     padding: 10px 0px;
     &.info--text {
-      @include flexWrap($justify-content: flex-end);
+      @include flexbox($justify: flex-end);
     }
   }
   .social--icon {
@@ -27,7 +27,7 @@
     }
   }
   @media #{$media-small} {
-    .hide{
+    .hide {
       display: none;
     }
     .copyright--text {

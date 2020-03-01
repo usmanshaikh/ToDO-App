@@ -1,4 +1,4 @@
-@import "../../.././styles/styles.variable.scss";
+@import "../../.././styles/_mixin_variables.scss";
 .header--page--wrapper {
   .navbar--bg--color {
     padding-left: 5px;
@@ -6,7 +6,7 @@
     background-color: $dark-black;
   }
   .toggle--menu--wrap {
-    @include flexWrap();
+    @include flexbox();
   }
   .user--avatar {
     width: 35px;
@@ -18,14 +18,14 @@
     width: 40px;
   }
   .navbar--brand--name {
-    @include flexWrap();
+    @include flexbox();
     .navbar--logo--name {
       padding: 0px 10px;
       color: $sky-green;
     }
   }
   .navbar--user--dropdown {
-    @include flexWrap();
+    @include flexbox();
     .user--name {
       font-size: 15px;
       padding: 0px 5px;
@@ -65,7 +65,7 @@
       .two--grid {
         outline: none;
         padding: 30px 15px;
-        @include flexWrap($flex-wrap: nowrap);
+        @include flexbox($wrap: nowrap);
       }
       .user--name {
         font-size: 15px;

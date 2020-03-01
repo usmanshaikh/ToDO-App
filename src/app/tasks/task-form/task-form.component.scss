@@ -1,4 +1,4 @@
-@import "../../.././styles/styles.variable.scss";
+@import "../../.././styles/_mixin_variables.scss";
 
 .task--form--wrapper {
   .to-do-tast-input-wrapper {
@@ -8,7 +8,6 @@
       height: 50px;
       border: none;
       color: $white;
-      text-transform: capitalize;
       background-color: transparent;
       border-bottom: 2px solid $sky-green !important;
       &::-webkit-input-placeholder {

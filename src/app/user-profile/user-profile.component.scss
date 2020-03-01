@@ -1,4 +1,4 @@
-@import "../.././styles/styles.variable.scss";
+@import "../.././styles/_mixin_variables.scss";
 .user--profile--page--wrapper {
   min-height: 500px;
   .profile--card {
@@ -65,7 +65,7 @@
     .two--grid {
       width: 400px;
       margin: 0 auto;
-      @include flexWrap($flex-wrap: nowrap, $justify-content: space-between);
+      @include flexbox($wrap: nowrap, $justify: space-between);
     }
     .col--1 {
       text-align: center;
@@ -79,7 +79,7 @@
       border-radius: 4px;
       font-weight: 500;
       border: 1px solid $white;
-      @include flexWrap($justify-content: center);
+      @include flexbox($justify: center);
     }
     .label {
       color: $white;
@@ -92,7 +92,7 @@
     color: #dc3545;
     font-weight: 900;
   }
-  .loadign-spinner{
+  .loadign-spinner {
     position: absolute;
     left: 7px;
   }

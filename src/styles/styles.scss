@@ -1,4 +1,4 @@
-@import "styles.variable.scss";
+@import "_mixin_variables.scss";
 @import "font-family.scss";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
@@ -8,7 +8,7 @@ body {
   overflow-y: scroll;
   font-family: "Roboto";
   background-color: $white;
-  &.blackBackground{
+  &.blackBackground {
     background-color: lighten($dark-black, 3);
   }
 }
@@ -22,7 +22,7 @@ body {
   position: fixed;
   opacity: 1;
   background-color: $white;
-  @include flexWrap($align-items:center,$justify-content: center);
+  @include flexbox($align: center, $justify: center);
   .loading--img {
     width: 50px;
     -webkit-animation-iteration-count: 1;
@@ -35,24 +35,103 @@ body {
 }
 
 @-webkit-keyframes splashScreenHide {
-  0% { opacity: 1; } 10% { opacity: 0.9; } 20% { opacity: 0.8; } 30% { opacity: 0.7; } 40% { opacity: 0.6; } 50% { opacity: 0.5; } 60% { opacity: 0.4; } 70% { opacity: 0.3; } 80% { opacity: 0.2; } 90% { opacity: 0.1; } 100% { opacity: 0; }
+  0% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  30% {
+    opacity: 0.7;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  60% {
+    opacity: 0.4;
+  }
+  70% {
+    opacity: 0.3;
+  }
+  80% {
+    opacity: 0.2;
+  }
+  90% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
-@keyframes splashScreenHide { 
-  0% { opacity: 1; } 10% { opacity: 0.9; } 20% { opacity: 0.8; } 30% { opacity: 0.7; } 40% { opacity: 0.6; } 50% { opacity: 0.5; } 60% { opacity: 0.4; } 70% { opacity: 0.3; } 80% { opacity: 0.2; } 90% { opacity: 0.1; } 100% { opacity: 0; }
+@keyframes splashScreenHide {
+  0% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  30% {
+    opacity: 0.7;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  60% {
+    opacity: 0.4;
+  }
+  70% {
+    opacity: 0.3;
+  }
+  80% {
+    opacity: 0.2;
+  }
+  90% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
-.mat-progress-spinner circle, .mat-spinner circle { stroke: #1ac1a4; }
+.mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: #1ac1a4;
+}
 
-.mat-drawer:not(.mat-drawer-side) { position: fixed; }
+.mat-drawer:not(.mat-drawer-side) {
+  position: fixed;
+}
 
-.mat-drawer-backdrop { position: fixed !important; }
+.mat-drawer-backdrop {
+  position: fixed !important;
+}
 
-.mat-drawer-container { position: static !important; }
+.mat-drawer-container {
+  position: static !important;
+}
 
-.mat-drawer-content { display: inline !important; }
+.mat-drawer-content {
+  display: inline !important;
+}
 
-.mat-drawer { left: 0; width: 70%; z-index: 9999 !important; }
+.mat-drawer {
+  left: 0;
+  width: 70%;
+  z-index: 9999 !important;
+}
 
 p {
   margin: 0px;
@@ -157,14 +236,14 @@ input {
     color: $white;
     background-color: $sky-green;
   }
-  .alert--text{
+  .alert--text {
     font-size: 13px;
     color: #dc3545;
     margin-top: 25px;
     text-align: center;
   }
   .social--icon--wrap {
-    @include flexWrap($justify-content: space-around);
+    @include flexbox($justify: space-around);
   }
   .social--icon {
     color: $white;
@@ -210,13 +289,6 @@ input {
 }
 
 @media #{$media-small} {
-  // body {
-  //   &.keyboardOpen{
-  //     .footerHide{
-  //       display: none;
-  //     }
-  //   }
-  // }
   .container {
     padding-left: 10px;
     padding-right: 10px;

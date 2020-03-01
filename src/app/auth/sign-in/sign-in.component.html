@@ -3,17 +3,36 @@
     <p class="header--txt">Log in</p>
     <p class="hyper--txt">- Log in with -</p>
     <div class="social--icon--wrap">
-      <button class="btn social--icon google" mat-button (click)="signInWithGoogle($event)"> 
-          <i class="fas fa-spinner fa-spin loadign-spinner" *ngIf="loadingGoogle"></i>
-          <i class="fab fa-google-plus-g"></i> Google 
+      <button
+        class="btn social--icon google"
+        mat-button
+        (click)="signInWithGoogle($event)"
+      >
+        <i
+          class="fas fa-spinner fa-spin loadign-spinner"
+          *ngIf="loadingGoogle"
+        ></i>
+        <i class="fab fa-google-plus-g"></i> Google
       </button>
-      <button class="btn social--icon facebook" mat-button (click)="signInWithFacebook($event)"> 
-          <i class="fas fa-spinner fa-spin loadign-spinner" *ngIf="loadingFacebook"></i>
-          <i class="fab fa-facebook-f"></i> Facebook 
+      <button
+        class="btn social--icon facebook"
+        mat-button
+        (click)="signInWithFacebook($event)"
+      >
+        <i
+          class="fas fa-spinner fa-spin loadign-spinner"
+          *ngIf="loadingFacebook"
+        ></i>
+        <i class="fab fa-facebook-f"></i> Facebook
       </button>
     </div>
     <p class="hyper--txt">- or use email address -</p>
-    <form class="common--form" (ngSubmit)="f.form.valid && onSubmit($event)" #f="ngForm" novalidate >
+    <form
+      class="common--form"
+      (ngSubmit)="f.form.valid && onSubmit($event)"
+      #f="ngForm"
+      novalidate
+    >
       <div class="input--wrap space">
         <input
           type="text"
@@ -56,7 +75,7 @@
       </div>
       <p class="alert--text">{{ loginErrorMsg }}</p>
       <div class="input--wrap space">
-        <button type="submit" class="btn login--btn" mat-button> LOG IN </button>
+        <button type="submit" class="btn login--btn" mat-button>LOG IN</button>
       </div>
     </form>
     <hr />

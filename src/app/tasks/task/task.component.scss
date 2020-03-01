@@ -1,4 +1,4 @@
-@import "../../.././styles/styles.variable.scss";
+@import "../../.././styles/_mixin_variables.scss";
 
 .task--page--wrapper {
   min-height: 500px;
@@ -7,7 +7,7 @@
     width: 75%;
     margin: 0 auto;
   }
-  @media only screen and (min-width: 768px) and (max-width: 1000px){
+  @media only screen and (min-width: 768px) and (max-width: 1000px) {
     .task--container--wrapperr {
       width: 100%;
     }
