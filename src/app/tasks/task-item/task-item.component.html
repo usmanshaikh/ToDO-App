@@ -7,7 +7,7 @@
         *ngIf="filterTaskItemList.length === 0; else taskItem"
       >
         <h1 class="no--task--heading">
-          <i class="far fa-smile"></i> Add A ToDO....
+          <i class="fal fa-smile"></i> Add A ToDO....
         </h1>
       </div>
       <ng-template #taskItem>
@@ -26,7 +26,7 @@
                 }"
                 (click)="onCompleteTask(item)"
               >
-                <i class="fas fa-check icon--i"></i>
+                <i class="far fa-check icon--i"></i>
               </button>
             </div>
             <div class="col--2 flex--box">
@@ -47,7 +47,7 @@
                 data-target="#editTaskModal"
                 (click)="onEditTaskModal(item)"
               >
-                <i class="far fa-edit icon--i"></i>
+                <i class="fad fa-edit icon--i"></i>
               </button>
               <button
                 class="btn btn--icon"
@@ -55,7 +55,7 @@
                 data-target="#deleteTaskModal"
                 (click)="onOpenDeleteModal(item)"
               >
-                <i class="far fa-trash-alt icon--i"></i>
+                <i class="fal fa-trash-alt icon--i"></i>
               </button>
             </div>
           </div>

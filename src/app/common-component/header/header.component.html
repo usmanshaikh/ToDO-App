@@ -29,7 +29,7 @@
             [routerLink]="['/']"
             (click)="sidenav.close()"
           >
-            <i class="fas fa-home"></i>Home
+            <i class="fas fa-home-lg-alt"></i>Home
           </button>
           <button
             class="menu--item"
@@ -45,7 +45,7 @@
             [routerLink]="['/sign-in']"
             (click)="onLogout(); sidenav.close()"
           >
-            <i class="fas fa-sign-out-alt"></i>Logout
+            <i class="fas fa-sign-out"></i>Logout
           </button>
         </div>
       </div>
@@ -99,7 +99,7 @@
                     aria-labelledby="navbarDropdown"
                   >
                     <a class="dropdown-item dp--menu" [routerLink]="['/']">
-                      <i class="fas fa-home"></i>Home
+                      <i class="fas fa-home-lg-alt"></i>Home
                     </a>
                     <a
                       class="dropdown-item dp--menu"
@@ -108,7 +108,7 @@
                       <i class="fas fa-user-circle"></i>Profile
                     </a>
                     <a class="dropdown-item dp--menu" (click)="onLogout()">
-                      <i class="fas fa-sign-out-alt"></i>Logout
+                      <i class="fas fa-sign-out"></i>Logout
                     </a>
                   </div>
                 </ng-template>

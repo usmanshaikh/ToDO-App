@@ -6,7 +6,7 @@
       data-target="#EditProfileModal"
       mat-button
     >
-      <i class="fas fa-edit"></i> Edit Profile
+      <i class="far fa-user-edit"></i> Edit Profile
     </button>
     <div class="image--wrap">
       <img [src]="imgSrc" class="user--image" alt="user-profile" />
@@ -30,7 +30,7 @@
           [ngClass]="{ disabledBtn: activeTaskCount === 0 }"
           data-target="#ClearActiveTodoModal"
         >
-          <i class="fas fa-trash"></i>Active ToDO
+          <i class="fal fa-trash-alt"></i>Active ToDO
         </button>
       </div>
       <div class="col--1 ">
@@ -46,7 +46,7 @@
           [ngClass]="{ disabledBtn: completeTaskCount === 0 }"
           data-target="#ClearCompletedTodoModal"
         >
-          <i class="fas fa-trash"></i>Completed ToDO
+          <i class="fal fa-trash-alt"></i>Completed ToDO
         </button>
       </div>
     </div>
